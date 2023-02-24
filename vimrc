@@ -1,4 +1,3 @@
-# .vimrc file
 inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
