@@ -327,8 +327,16 @@ globalkeys = gears.table.join(
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
-     awful.key({  }, "#121", function() awful.spawn("pamixer --toggle-mute --sink 58") end,
-              {description = "Mute", group = "awesome"})
+    awful.key({  }, "#121", function() awful.spawn("pamixer --toggle-mute") end,
+              {description = "Mute", group = "Fn Keys"}),
+    awful.key({  }, "#122", function() awful.spawn("pamixer --decrease 5") end,
+              {description = "Decrease Volume", group = "Fn Keys"}),
+    awful.key({  }, "#123", function() awful.spawn("pamixer --increase 5") end,
+              {description = "Increase Volume", group = "Fn Keys"}),
+    awful.key({  }, "#232", function() awful.spawn("brightnessctl s 5%-") end,
+              {description = "Decrease Brightness", group = "Fn Keys"}),
+    awful.key({  }, "#233", function() awful.spawn("brightnessctl s +5%") end,
+              {description = "Increase Brightness", group = "Fn Keys"})
 
 )
 
