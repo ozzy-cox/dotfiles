@@ -62,8 +62,8 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
+    awful.layout.suit.floating,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
@@ -349,10 +349,12 @@ globalkeys = gears.table.join(
     awful.key({  }, "#232", function() awful.spawn("brightnessctl s 5%-") end,
               {description = "Decrease Brightness", group = "Fn Keys"}),
     awful.key({  }, "#233", function() awful.spawn("brightnessctl s +5%") end,
-              {description = "Increase Brightness", group = "Fn Keys"})
-
+              {description = "Increase Brightness", group = "Fn Keys"}),
+    awful.key({ modkey, "space"   }, "u", function () awful.spawn("setxkbmap -layout us")  end,
+              {description = "Change keyboard to US layout", group = "Keyboard"}),
+    awful.key({ modkey, "space"   }, "t", function () awful.spawn("setxkbmap -layout tr")  end,
+              {description = "Change keyboard to TR layout", group = "Keyboard"})
 )
-
 clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
         function (c)
