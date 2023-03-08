@@ -304,10 +304,10 @@ globalkeys = gears.table.join(
               {description = "increase the number of columns", group = "layout"}),
     awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1, nil, true)    end,
               {description = "decrease the number of columns", group = "layout"}),
---    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
---              {description = "select next", group = "layout"}),
---   awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
---            {description = "select previous", group = "layout"}),
+    awful.key({ modkey,           }, "space", function () awful.layout.inc( 1)                end,
+              {description = "select next", group = "layout"}),
+   awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(-1)                end,
+            {description = "select previous", group = "layout"}),
 
     awful.key({ modkey, "Control" }, "n",
               function ()
@@ -352,9 +352,9 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "Escape", function () awful.spawn("/home/ozank/lock.sh")  end ,
               {description = "Lock screen", group = "Fn Keys"}),
     -- Keyboard
-    awful.key({ modkey, "space"   }, "u", function () awful.spawn("setxkbmap -layout us")  end,
+    awful.key({ modkey, "Control"   }, "u", function () awful.spawn("setxkbmap -layout us")  end,
               {description = "Change keyboard to US layout", group = "Keyboard"}),
-    awful.key({ modkey, "space"   }, "t", function () awful.spawn("setxkbmap -layout tr")  end,
+    awful.key({ modkey, "Control"   }, "t", function () awful.spawn("setxkbmap -layout tr")  end,
               {description = "Change keyboard to TR layout", group = "Keyboard"})
 )
 clientkeys = gears.table.join(
