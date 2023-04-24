@@ -350,12 +350,17 @@ globalkeys = gears.table.join(
     awful.key({  }, "#233", function() awful.spawn("brightnessctl s +5%") end,
               {description = "Increase Brightness", group = "Fn Keys"}),
     awful.key({ modkey,           }, "Escape", function () awful.spawn("/home/ozank/lock.sh")  end ,
-              {description = "Lock screen", group = "Fn Keys"}),
+              {description = "Lock screen", group = "Utils"}),
+    awful.key({ modkey,           }, "c", function () awful.spawn("flameshot gui")  end ,
+              {description = "Get screenshot", group = "Utils"}),
+
     -- Keyboard
     awful.key({ modkey, "Control"   }, "u", function () awful.spawn("setxkbmap -layout us")  end,
               {description = "Change keyboard to US layout", group = "Keyboard"}),
     awful.key({ modkey, "Control"   }, "t", function () awful.spawn("setxkbmap -layout tr")  end,
-              {description = "Change keyboard to TR layout", group = "Keyboard"})
+              {description = "Change keyboard to TR layout", group = "Keyboard"}),
+    awful.key({ modkey, }, "t", function () awful.spawn("ticktick")  end,
+              {description = "Open TODOs", group = "Utils"})
 )
 clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
