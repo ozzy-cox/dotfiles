@@ -87,9 +87,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='nvim'
+  export EDITOR='lvim'
 else
-  export EDITOR='nvim'
+  export EDITOR='lvim'
 fi
 
 # Compilation flags
@@ -129,5 +129,5 @@ alias cpprogress='rsync -ahP '
 export NODE_OPTIONS="--max-old-space-size=8192"
 bindkey '^H' backward-kill-word
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-alias vim='nvim'
-alias vi='nvim'
+alias vim='lvim'
+alias vi='lvim'
