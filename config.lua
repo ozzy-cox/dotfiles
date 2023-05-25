@@ -57,6 +57,15 @@ formatters.setup {
   },
 }
 
+local prettier = require("prettier")
+
+prettier.setup({
+  bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+  filetypes = {
+    "sql"
+  },
+})
+
 
 require("luasnip/loaders/from_vscode").load { paths = { "~/.config/lvim/snippets/vscode-es7-javascript-react-snippets" } }
 
@@ -97,7 +106,8 @@ lvim.plugins = {
   "mfussenegger/nvim-dap-python",
   "nvim-neotest/neotest",
   "nvim-neotest/neotest-python",
-  "windwp/nvim-ts-autotag"
+  "windwp/nvim-ts-autotag",
+  "MunifTanjim/prettier.nvim"
 }
 
 require('nvim-ts-autotag').setup()
