@@ -355,7 +355,7 @@ globalkeys = gears.table.join(
               {description = "Get screenshot", group = "Utils"}),
 
     -- Keyboard
-    awful.key({ modkey, "Control"   }, "u", function () awful.spawn("setxkbmap -layout us")  end,
+    awful.key({ modkey, "Control"   }, "u", function () awful.spawn("setxkbmap -layout us -variant custom")  end,
               {description = "Change keyboard to US layout", group = "Keyboard"}),
     awful.key({ modkey, "Control"   }, "t", function () awful.spawn("setxkbmap -layout tr")  end,
               {description = "Change keyboard to TR layout", group = "Keyboard"}),
