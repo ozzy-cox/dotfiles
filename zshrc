@@ -119,6 +119,8 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="$PATH:/opt/mssql-tools/bin"i
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PHPENV_ROOT="$HOME/.phpenv"
+export PATH="$PHPENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 export PATH="$PATH:/opt/mssql-tools/bin"
@@ -131,3 +133,4 @@ bindkey '^H' backward-kill-word
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 alias vim='lvim'
 alias vi='lvim'
+eval "$(phpenv init -)"

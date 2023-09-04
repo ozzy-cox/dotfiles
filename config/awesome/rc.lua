@@ -183,6 +183,16 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+systray = wibox.widget.systray()
+timer_text = 'Work Time: ' .. '00:00'
+
+timer = wibox.widget {
+  widget = wibox.widget.textbox,
+  text = timer_text,
+  forced_height = 1,
+  visible = false
+}
+
 awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   set_wallpaper(s)
@@ -221,18 +231,19 @@ awful.screen.connect_for_each_screen(function(s)
   s.mywibox:setup {
     layout = wibox.layout.align.horizontal,
     {
-          -- Left widgets
+      -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       mylauncher,
       s.mytaglist,
       s.mypromptbox,
     },
-    s.mytasklist,     -- Middle widget
+    s.mytasklist, -- Middle widget
     {
-                      -- Right widgets
+      -- Right widgets
       layout = wibox.layout.fixed.horizontal,
+      systray,
+      timer,
       mykeyboardlayout,
-      wibox.widget.systray(),
       mytextclock,
       batwidget,
       s.mylayoutbox,
@@ -504,8 +515,8 @@ awful.rules.rules = {
   {
     rule_any = {
       instance = {
-        "DTA",     -- Firefox addon DownThemAll.
-        "copyq",   -- Includes session name in class.
+        "DTA",   -- Firefox addon DownThemAll.
+        "copyq", -- Includes session name in class.
         "pinentry",
       },
       class = {
@@ -513,9 +524,9 @@ awful.rules.rules = {
         "Blueman-manager",
         "Gpick",
         "Kruler",
-        "MessageWin",    -- kalarm.
+        "MessageWin",  -- kalarm.
         "Sxiv",
-        "Tor Browser",   -- Needs a fixed window size to avoid fingerprinting by screen size.
+        "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
         "Wpa_gui",
         "veromix",
         "xtightvncviewer" },
@@ -523,12 +534,12 @@ awful.rules.rules = {
       -- Note that the name property shown in xprop might be set slightly after creation of the client
       -- and the name shown there might not match defined rules here.
       name = {
-        "Event Tester",   -- xev.
+        "Event Tester", -- xev.
       },
       role = {
-        "AlarmWindow",     -- Thunderbird's calendar.
-        "ConfigManager",   -- Thunderbird's about:config.
-        "pop-up",          -- e.g. Google Chrome's (detached) Developer Tools.
+        "AlarmWindow",   -- Thunderbird's calendar.
+        "ConfigManager", -- Thunderbird's about:config.
+        "pop-up",        -- e.g. Google Chrome's (detached) Developer Tools.
       }
     },
     properties = { floating = true }
@@ -578,15 +589,15 @@ client.connect_signal("request::titlebars", function(c)
 
   awful.titlebar(c):setup {
     {
-          -- Left
+      -- Left
       awful.titlebar.widget.iconwidget(c),
       buttons = buttons,
       layout  = wibox.layout.fixed.horizontal
     },
     {
-              -- Middle
+      -- Middle
       {
-              -- Title
+        -- Title
         align  = "center",
         widget = awful.titlebar.widget.titlewidget(c)
       },
@@ -594,7 +605,7 @@ client.connect_signal("request::titlebars", function(c)
       layout  = wibox.layout.flex.horizontal
     },
     {
-          -- Right
+      -- Right
       awful.titlebar.widget.floatingbutton(c),
       awful.titlebar.widget.maximizedbutton(c),
       awful.titlebar.widget.stickybutton(c),
