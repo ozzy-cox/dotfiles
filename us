@@ -2386,7 +2386,8 @@ xkb_symbols "custom" {
     key <AB02>	{[	 x,	 X, ampersand		]};
     key <AB03>	{[	 c,	 C, BackSpace		]};
     key <AB04>	{[	 v,	 V, Delete		]};
-
-
+    key <AB06>	{[	 n,	 N, Left  ]};
+    key <AB07>	{[	 m,	 M, Right ]};
+    key <AB09>	{[  period,	 greater, minus 	]};
     include "level3(ralt_switch)"
 };
