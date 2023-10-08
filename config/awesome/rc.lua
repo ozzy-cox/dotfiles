@@ -110,6 +110,10 @@ mylauncher = awful.widget.launcher({
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
+memwidget = wibox.widget.textbox()
+vicious.cache(vicious.widgets.mem)
+vicious.register(memwidget, vicious.widgets.mem, "$1 ($2MiB/$3MiB)", 13)
+
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
@@ -120,7 +124,12 @@ mytextclock = wibox.widget.textclock()
 batwidget = wibox.widget.textbox()
 
 -- Register battery widget
-vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
+vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT1")
+
+chargingwidget = wibox.widget.textbox()
+
+-- Register battery widget
+vicious.register(chargingwidget, vicious.widgets.bat, "$1", 3, "BAT1")
 
 datewidget = wibox.widget.textbox()
 vicious.register(datewidget, vicious.widgets.date, "%b %d, %R")
@@ -233,7 +242,7 @@ awful.screen.connect_for_each_screen(function(s)
     {
       -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      mylauncher,
+      -- mylauncher,
       s.mytaglist,
       s.mypromptbox,
     },
@@ -242,10 +251,12 @@ awful.screen.connect_for_each_screen(function(s)
       -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       systray,
+      memwidget,
       timer,
       mykeyboardlayout,
       mytextclock,
       batwidget,
+      chargingwidget,
       s.mylayoutbox,
     },
   }

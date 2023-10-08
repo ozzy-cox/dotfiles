@@ -119,8 +119,9 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="$PATH:/opt/mssql-tools/bin"i
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-export PHPENV_ROOT="$HOME/.phpenv"
-export PATH="$PHPENV_ROOT/bin:$PATH"
+# export PHPENV_ROOT="$HOME/.phpenv"
+# export PATH="$PHPENV_ROOT/bin:$PATH"
+# eval "$(phpenv init -)"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 export PATH="$PATH:/opt/mssql-tools/bin"
@@ -133,4 +134,21 @@ bindkey '^H' backward-kill-word
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 alias vim='lvim'
 alias vi='lvim'
-eval "$(phpenv init -)"
+# export GOOGLE_APPLICATION_CREDENTIALS=~/configs/gcp-local-dev.json
+export DJANGO_SETTINGS_MODULE=conf.settings.local
+export SENTRY_AUTH_TOKEN=61684a0d323079f949a8bdb22a73eb8275a34d834fa82e1e76a8e8c2ba1f8f06
+eval "$(pyenv virtualenv-init -)"
+
+# pnpm
+export PNPM_HOME="/home/ozank/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Load Angular CLI autocompletion.
+source <(ng completion script)
+
+alias codeapi='code ~/prj/userguiding/src/api'
+alias codeus='code ~/prj/userguiding/src/user-storage'
