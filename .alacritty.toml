@@ -1,0 +1,8 @@
+# Configuration for Alacritty (Hypothetical TOML Example)
+
+[font]
+
+normal = { family = "Monaco Nerd Font", style = "Regular" }
+
+# Font size
+size = 12.0 # Adjust the size as needed
