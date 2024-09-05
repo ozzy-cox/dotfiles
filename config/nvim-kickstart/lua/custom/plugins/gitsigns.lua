@@ -34,7 +34,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else
-          gitsigns.nav_hunk 'next'
+          gitsigns.nanextv_hunk 'next'
         end
       end)
 
@@ -68,6 +68,8 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         gitsigns.diffthis '~'
       end)
       map('n', '<leader>td', gitsigns.toggle_deleted)
+      map('n', '<leader>hn', gitsigns.nav_hunk)
+      map('n', '<leader>hp', gitsigns.nav_hunk)
 
       -- Text object
       map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>')
