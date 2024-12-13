@@ -164,6 +164,7 @@ vim.opt.scrolloff = 8
 vim.opt.hlsearch = true
 vim.keymap.set('n', '<leader>gg', '<cmd>G<cr>', { desc = 'Go to previous [D]iagnostic message' })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.api.nvim_set_hl(0, 'DapStopped', { fg = '#FF0000', bg = '#00FF00', bold = true })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>lp', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
@@ -260,8 +261,40 @@ require('lazy').setup({
   },
 })
 
-vim.api.nvim_exec([[
+neoscroll = require 'neoscroll'
+local keymap = {
+  ['<C-u>'] = function()
+    neoscroll.ctrl_u { duration = 50 }
+  end,
+  ['<C-d>'] = function()
+    neoscroll.ctrl_d { duration = 50 }
+  end,
+  ['<C-y>'] = function()
+    neoscroll.scroll(-0.1, { move_cursor = false, duration = 50 })
+  end,
+  ['<C-e>'] = function()
+    neoscroll.scroll(0.1, { move_cursor = false, duration = 50 })
+  end,
+  ['zt'] = function()
+    neoscroll.zt { half_win_duration = 50 }
+  end,
+  ['zz'] = function()
+    neoscroll.zz { half_win_duration = 50 }
+  end,
+  ['zb'] = function()
+    neoscroll.zb { half_win_duration = 50 }
+  end,
+}
+local modes = { 'n', 'v', 'x' }
+for key, func in pairs(keymap) do
+  vim.keymap.set(modes, key, func)
+end
+
+vim.api.nvim_exec(
+  [[
   autocmd BufNewFile,BufRead *.json set filetype=jsonc
-]], false)
+]],
+  false
+)
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

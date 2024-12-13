@@ -1,8 +1,37 @@
 # Configuration for Alacritty (Hypothetical TOML Example)
+import = [
+    "~/.config/alacritty/themes/themes/dracula_plus.toml"
+]
+
 
 [font]
-
 normal = { family = "Monaco Nerd Font", style = "Regular" }
-
 # Font size
 size = 12.0 # Adjust the size as needed
+
+[window]
+decorations = "None"
+option_as_alt = "OnlyRight"
+
+[window.padding]
+x = 0
+y = 0
+
+
+[keyboard]
+bindings = [
+{ key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+# { key = "u", mods = "Alt", chars = "\x1b" },
+
+# Key binding for Alt + J
+ # { key="J",        mods= "Alt",     action= "Write(char = "\x1b" + 'j')" },
+
+# Key binding for Alt + K
+#  { key: "K",        mods: "Alt",     action: Write(char = '\x1b' + 'k') },
+#
+# # Key binding for Alt + H
+#  { key: "H",        mods: "Alt",     action: Write(char = '\x1b' + 'h') },
+# # Key binding for Alt + L
+#  { key: "L",        mods: "Alt",     action: Write(char = '\x1b' + 'l') }
+]
+
