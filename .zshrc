@@ -74,6 +74,7 @@ plugins=(
 	git
 	docker
 	fzf
+	kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -85,12 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='lvim'
-else
-  export EDITOR='lvim'
-fi
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -119,36 +115,43 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="$PATH:/opt/mssql-tools/bin"i
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-# export PHPENV_ROOT="$HOME/.phpenv"
-# export PATH="$PHPENV_ROOT/bin:$PATH"
-# eval "$(phpenv init -)"
+export GOPATH=$HOME/go
+export PATH="$GOPATH:$PATH"
+export GOBIN=$(go env GOPATH)/bin
+export PATH=$PATH:$GOBIN
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
 export PATH="$PATH:/opt/mssql-tools/bin"
 export ORACLE_HOME=$HOME/Downloads/instantclient_21_7
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
 alias ll='ls -rtlaFsh'
+alias lg='lazygit'
 alias cpprogress='rsync -ahP '
 export NODE_OPTIONS="--max-old-space-size=8192"
 bindkey '^H' backward-kill-word
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-alias vim='lvim'
-alias vi='lvim'
-# export GOOGLE_APPLICATION_CREDENTIALS=~/configs/gcp-local-dev.json
-export DJANGO_SETTINGS_MODULE=conf.settings.local
-export SENTRY_AUTH_TOKEN=61684a0d323079f949a8bdb22a73eb8275a34d834fa82e1e76a8e8c2ba1f8f06
-eval "$(pyenv virtualenv-init -)"
+alias vim='nvim'
+alias vi='nvim'
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+# export GOOGLE_APPLICATION_CREDENTIALS="/Users/ozankoksal/google-creds.json"
+export PIP_EXTRA_INDEX_URL=https://pypi.org/simple
 
-# pnpm
-export PNPM_HOME="/home/ozank/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+# opam configuration
+[[ ! -r /Users/ozankoksal/.opam/opam-init/init.zsh ]] || source /Users/ozankoksal/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
 
-# Load Angular CLI autocompletion.
-source <(ng completion script)
+# >>> JVM installed by coursier >>>
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
+# <<< JVM installed by coursier <<<
 
-alias codeapi='code ~/prj/userguiding/src/api'
-alias codeus='code ~/prj/userguiding/src/user-storage'
+# >>> coursier install directory >>>
+export PATH="$PATH:/Users/ozankoksal/Library/Application Support/Coursier/bin"
+# <<< coursier install directory <<<
+#
+export NVIM_APPNAME="nvim-kickstart"
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+alias mk="minikube"
+alias mkd="minikube dashboard"
+alias mkc="minikube kubectl --"
+alias kc="kubectl"
