@@ -1,5 +1,5 @@
 # Configuration for Alacritty (Hypothetical TOML Example)
-import = [
+general.import = [
     "~/.config/alacritty/themes/themes/dracula_plus.toml"
 ]
 
