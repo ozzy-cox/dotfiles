@@ -1,4 +1,3 @@
-zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -101,7 +100,7 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export NVM_DIR="$HOME/.nvm"
-[ -s "$HOME/nvm_script.sh" ] && \. "$HOME/nvm_script.sh"  # This loads nvm
+# [ -s "$HOME/nvm_script.sh" ] && \. "$HOME/nvm_script.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 
@@ -132,13 +131,10 @@ alias vi='nvim'
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # export GOOGLE_APPLICATION_CREDENTIALS="/Users/ozankoksal/google-creds.json"
 export PIP_EXTRA_INDEX_URL=https://pypi.org/simple
-# >>> JVM installed by coursier >>>
-export JAVA_HOME="/opt/homebrew/opt/openjdk"
 # >>> coursier install directory >>>
 export PATH="$PATH:/Users/ozankoksal/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
 export NVIM_APPNAME="nvim-kickstart"
-export PATH="$HOME/.jenv/bin:$PATH"
 
 alias mk="minikube"
 alias mkd="minikube dashboard"
@@ -146,4 +142,3 @@ alias mkc="minikube kubectl --"
 alias kc="kubectl"
 
 [ -s "$HOME/env_script.sh" ] && \. "$HOME/env_script.sh"  # This loads nvm
-zprof
