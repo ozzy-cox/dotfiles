@@ -2368,7 +2368,7 @@ xkb_symbols "custom" {
     key <AD11>	{[ bracketleft,	 braceleft	]};
     key <AD12>	{[ bracketright, braceright	]};
 
-    key <AC01>	{[	 a,	 A, parenleft		]};
+    key <AC01>	{[	 a,	 A, parenleft	]};
     key <AC02>	{[	 s,	 S, parenright 	]};
     key <AC03>	{[	 d,	 D, bracketleft		]};
     key <AC04>	{[	 f,	 F, bracketright 	]};
@@ -2389,5 +2389,32 @@ xkb_symbols "custom" {
     key <AB06>	{[	 n,	 N, Left  ]};
     key <AB07>	{[	 m,	 M, Right ]};
     key <AB09>	{[  period,	 greater, minus 	]};
+
     include "level3(ralt_switch)"
+    key <LALT> {
+        type[Group1] = "ONE_LEVEL",
+        symbols[Group1] = [ ISO_Level5_Shift ]
+    };
+
+    key <AC06> {
+        type[Group1] = "EIGHT_LEVEL",
+        symbols[Group1] = [	 h,	 H, bar, H, Left, Left, Left, Left		]
+    };
+
+     key <AC07> {
+         type[Group1] = "EIGHT_LEVEL",
+         symbols[Group1] = [	 j,	 J, braceleft,J, Down		]
+     };
+
+     key <AC08> {
+         type[Group1] = "EIGHT_LEVEL",
+         symbols[Group1] = [	 k,	 K, braceright, K ,Up		]
+     };
+
+     key <AC09> {
+         type[Group1] = "EIGHT_LEVEL",
+         symbols[Group1] = [	 l,	 L, underscore, L,Right		]
+     };
+
+
 };

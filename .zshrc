@@ -1,3 +1,4 @@
+zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -87,7 +88,7 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 export EDITOR='nvim'
-
+# DISABLE_AUTO_UPDATE="true"
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -100,14 +101,11 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "$HOME/nvm_script.sh" ] && \. "$HOME/nvm_script.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 export PATH="$HOME/.local/bin:$PATH"
-# eval "$(pyenv virtualenv-init -)"
-
-# export PATH="$HOME/.pyenv/shims:$PATH"
-# export PATH="$HOME/.pyenv/bin:$PATH"
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/tools
@@ -115,12 +113,11 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH="$PATH:/opt/mssql-tools/bin"i
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
+
 export GOPATH=$HOME/go
 export PATH="$GOPATH:$PATH"
 export GOBIN=$(go env GOPATH)/bin
 export PATH=$PATH:$GOBIN
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
 export PATH="$PATH:/opt/mssql-tools/bin"
 export ORACLE_HOME=$HOME/Downloads/instantclient_21_7
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
@@ -135,23 +132,18 @@ alias vi='nvim'
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # export GOOGLE_APPLICATION_CREDENTIALS="/Users/ozankoksal/google-creds.json"
 export PIP_EXTRA_INDEX_URL=https://pypi.org/simple
-
-# opam configuration
-[[ ! -r /Users/ozankoksal/.opam/opam-init/init.zsh ]] || source /Users/ozankoksal/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
-
 # >>> JVM installed by coursier >>>
 export JAVA_HOME="/opt/homebrew/opt/openjdk"
-# <<< JVM installed by coursier <<<
-
 # >>> coursier install directory >>>
 export PATH="$PATH:/Users/ozankoksal/Library/Application Support/Coursier/bin"
 # <<< coursier install directory <<<
-#
 export NVIM_APPNAME="nvim-kickstart"
 export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
 
 alias mk="minikube"
 alias mkd="minikube dashboard"
 alias mkc="minikube kubectl --"
 alias kc="kubectl"
+
+[ -s "$HOME/env_script.sh" ] && \. "$HOME/env_script.sh"  # This loads nvm
+zprof
