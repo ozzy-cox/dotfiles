@@ -9,10 +9,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       ignore_whitespace = false,
       virt_text_priority = 100,
     },
-    current_line_blame_formatter = '<author>, <author_time:%Y-%m-%d> - <summary>',
-    current_line_blame_formatter_opts = {
-      relative_time = true,
-    },
+    current_line_blame_formatter = '<author>, <author_time:%R> - <summary>',
     signs = {
       add = { text = '+' },
       change = { text = '~' },

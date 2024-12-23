@@ -3,6 +3,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 sudo fc-cache -f -v
 paru -Sy bash bc coreutils git jq playerctl
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+paru -Sy zsh-syntax-highlighting  tldr
 
 
 

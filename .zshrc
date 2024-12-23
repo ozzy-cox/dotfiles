@@ -1,6 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+# source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# ZVM_LINE_INIT_MODE=$ZVM_MODE_NORMAL
+# ZVM_INIT_MODE=sourcing
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -73,8 +76,9 @@ ZSH_THEME="dstufft"
 plugins=(
 	git
 	docker
-	fzf
 	kubectl
+	vi-mode
+	fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -142,3 +146,15 @@ alias mkc="minikube kubectl --"
 alias kc="kubectl"
 
 [ -s "$HOME/env_script.sh" ] && \. "$HOME/env_script.sh"  # This loads nvm
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+lfcd () {
+    # `command` is needed in case `lfcd` is aliased to `lf`
+    cd "$(command lf -print-last-dir "$@")"
+}
+alias lf="lfcd"
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+
+bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode

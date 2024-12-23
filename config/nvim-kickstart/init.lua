@@ -83,6 +83,11 @@ I hope you enjoy your Neovim journey,
 
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
+--
+--
+
+vim.keymap.set('n', '<space>x', ':.lua<CR>')
+vim.keymap.set('v', '<space>x', ':lua<CR>')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -136,7 +141,7 @@ vim.opt.updatetime = 250
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
-vim.opt.timeoutlen = 300
+-- vim.opt.timeoutlen = 300
 
 -- Configure how new splits should be opened
 vim.opt.splitright = true
@@ -224,16 +229,47 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
---
+local function list_default_options()
+  -- Open a new buffer
+  vim.api.nvim_command 'new'
+
+  -- Make the buffer unmodifiable and nofile type
+  vim.api.nvim_buf_set_option(0, 'buftype', 'nofile')
+  vim.api.nvim_buf_set_option(0, 'bufhidden', 'hide')
+  vim.api.nvim_buf_set_option(0, 'swapfile', false)
+
+  -- Retrieve all options information
+  local opts = vim.api.nvim_get_all_options_info()
+
+  -- Prepare the output lines
+  local lines = {}
+  for name, info in pairs(opts) do
+    local default_val
+    if type(info.default) == 'boolean' then
+      default_val = info.default and 'true' or 'false'
+    elseif type(info.default) == 'string' then
+      default_val = '"' .. info.default .. '"'
+    else
+      default_val = tostring(info.default)
+    end
+    table.insert(lines, string.format('%-30s = %s', name, default_val))
+  end
+
+  -- Sort the lines alphabetically
+  table.sort(lines)
+
+  -- Set the lines in the buffer
+  vim.api.nvim_buf_set_lines(0, 0, -1, false, lines)
+
+  -- Make the buffer read-only
+  vim.api.nvim_buf_set_option(0, 'modifiable', false)
+
+  -- Optional: Set a descriptive buffer name
+  vim.api.nvim_buf_set_name(0, 'Default Neovim Options')
+end
+
+vim.keymap.set('n', '<leader>do', list_default_options)
+
 -- NOTE: Here is where you install your plugins.
 require('lazy').setup({
   require 'kickstart.plugins.debug',
@@ -261,7 +297,7 @@ require('lazy').setup({
   },
 })
 
-neoscroll = require 'neoscroll'
+local neoscroll = require 'neoscroll'
 local keymap = {
   ['<C-u>'] = function()
     neoscroll.ctrl_u { duration = 50 }
@@ -296,5 +332,6 @@ vim.api.nvim_exec(
 ]],
   false
 )
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

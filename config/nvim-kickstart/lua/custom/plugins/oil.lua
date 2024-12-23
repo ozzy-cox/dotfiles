@@ -1,7 +1,10 @@
 vim.keymap.set('n', '<leader>e', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 return {
+
   'stevearc/oil.nvim',
   opts = {
+    default_file_explorer = true,
+    watch_for_changes = true,
     keymaps = {
       ['g?'] = 'actions.show_help',
       ['<CR>'] = 'actions.select',
