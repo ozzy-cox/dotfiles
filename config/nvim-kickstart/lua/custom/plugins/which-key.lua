@@ -54,6 +54,11 @@ return {
       desc = 'Write',
     },
     {
+      '<leader>W',
+      '<cmd>wa!<CR>',
+      desc = 'WriteAll',
+    },
+    {
       '<leader>q',
       '<cmd>confirm q<CR>',
       desc = 'Quit',

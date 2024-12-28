@@ -137,6 +137,10 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 export PIP_EXTRA_INDEX_URL=https://pypi.org/simple
 # >>> coursier install directory >>>
 export PATH="$PATH:/Users/ozankoksal/Library/Application Support/Coursier/bin"
+export GEMBIN="/home/ozank/.local/share/gem/ruby/3.3.0/bin"
+export PATH="$PATH:$GEMBIN"
+
+
 # <<< coursier install directory <<<
 export NVIM_APPNAME="nvim-kickstart"
 
@@ -158,3 +162,9 @@ alias dcd="docker compose down"
 
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
+
+PATH="/home/ozank/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="/home/ozank/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="/home/ozank/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"/home/ozank/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=/home/ozank/perl5"; export PERL_MM_OPT;
