@@ -150,7 +150,7 @@ alias mkc="minikube kubectl --"
 alias kc="kubectl"
 
 [ -s "$HOME/env_script.sh" ] && \. "$HOME/env_script.sh"  # This loads nvm
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 lfcd () {
     # `command` is needed in case `lfcd` is aliased to `lf`

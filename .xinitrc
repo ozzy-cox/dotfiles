@@ -51,4 +51,8 @@ fi
 picom -b --no-fading-openclose
 setxkbmap custom_us custom
 xset r rate 200 50
+echo 1 > /sys/bus/hid/drivers/apple/module/parameters/swap_opt_cmd
+echo 1 > /sys/bus/hid/drivers/apple/module/parameters/swap_fn_leftctrl
+echo 2 > /sys/bus/hid/drivers/apple/module/parameters/fnmode
+xinput set-prop "Apple MTP multi-touch" "libinput Natural Scrolling Enabled" 0
 exec awesome
