@@ -160,8 +160,6 @@ alias lf="lfcd"
 alias dcu="docker compose up"
 alias dcd="docker compose down"
 
-bindkey -v
-bindkey -M viins 'jj' vi-cmd-mode
 
 PATH="/home/ozank/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="/home/ozank/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;

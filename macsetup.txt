@@ -1,0 +1,5 @@
+sudo grubby --args=apple_dcp.show_notch=1 --update-kernel=ALL
+sudo grubby --update-kernel=ALL --args="hid_apple.swap_fn_leftctrl=1"
+sudo grubby --update-kernel=ALL --args="hid_apple.swap_opt_cmd=1"
+sudo grubby --update-kernel=ALL --args="hid_apple.fnmode=2"
+

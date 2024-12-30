@@ -122,7 +122,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 
 memwidget = wibox.widget.textbox()
 vicious.cache(vicious.widgets.mem)
-vicious.register(memwidget, vicious.widgets.mem, '$1 ($2MiB/$3MiB)', 13)
+vicious.register(memwidget, vicious.widgets.mem, ' %$1($2MiB/$3MiB)', 13)
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -134,12 +134,12 @@ mytextclock = wibox.widget.textclock()
 batwidget = wibox.widget.textbox()
 
 -- Register battery widget
-vicious.register(batwidget, vicious.widgets.bat, '$2', 61, 'BAT1')
+vicious.register(batwidget, vicious.widgets.bat, '$2', 61, 'macsmc-battery')
 
 chargingwidget = wibox.widget.textbox()
 
 -- Register battery widget
-vicious.register(chargingwidget, vicious.widgets.bat, '$1', 3, 'BAT1')
+vicious.register(chargingwidget, vicious.widgets.bat, '$1', 3, 'macsmc-battery')
 
 datewidget = wibox.widget.textbox()
 vicious.register(datewidget, vicious.widgets.date, '%b %d, %R')
@@ -256,30 +256,34 @@ awful.screen.connect_for_each_screen(function(s)
   }
 
   -- Create the wibox
-  s.mywibox = awful.wibar { position = 'top', screen = s }
+  s.mywibox = awful.wibar { position = 'top', screen = s, height = 40 }
 
   -- Add widgets to the wibox
   s.mywibox:setup {
-    layout = wibox.layout.align.horizontal,
+    widget = wibox.container.margin,
+    left = 32,
     {
-      -- Left widgets
-      layout = wibox.layout.fixed.horizontal,
-      -- mylauncher,
-      s.mytaglist,
-      s.mypromptbox,
-    },
-    s.mytasklist, -- Middle widget
-    {
-      -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
-      systray,
-      memwidget,
-      timer,
-      mykeyboardlayout,
-      mytextclock,
-      batwidget,
-      chargingwidget,
-      s.mylayoutbox,
+      layout = wibox.layout.align.horizontal,
+      {
+        -- Left widgets
+        layout = wibox.layout.fixed.horizontal,
+        -- mylauncher,
+        s.mytaglist,
+        s.mypromptbox,
+      },
+      s.mytasklist, -- Middle widget
+      {
+        -- Right widgets
+        layout = wibox.layout.fixed.horizontal,
+        systray,
+        memwidget,
+        timer,
+        mykeyboardlayout,
+        mytextclock,
+        batwidget,
+        chargingwidget,
+        s.mylayoutbox,
+      },
     },
   }
 end)
@@ -419,7 +423,7 @@ globalkeys = gears.table.join(
     awful.spawn 'setxkbmap -layout tr'
   end, { description = 'Change keyboard to TR layout', group = 'Keyboard' }),
   awful.key({ modkey }, 't', function()
-    awful.spawn 'ticktick'
+    awful.spawn 'obsidian'
   end, { description = 'Open TODOs', group = 'Utils' })
 )
 clientkeys = gears.table.join(
@@ -612,7 +616,8 @@ client.connect_signal('request::titlebars', function(c)
     end)
   )
 
-  awful.titlebar(c):setup {
+  awful.titlebar(c, { size = 32 }):setup {
+
     {
       -- Left
       awful.titlebar.widget.iconwidget(c),
@@ -622,9 +627,13 @@ client.connect_signal('request::titlebars', function(c)
     {
       -- Middle
       {
-        -- Title
-        align = 'center',
-        widget = awful.titlebar.widget.titlewidget(c),
+        {
+          -- Title
+          align = 'left',
+          widget = awful.titlebar.widget.titlewidget(c),
+        },
+        left = 8,
+        widget = wibox.container.margin,
       },
       buttons = buttons,
       layout = wibox.layout.flex.horizontal,
